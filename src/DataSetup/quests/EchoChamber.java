@@ -48,14 +48,23 @@ public class EchoChamber extends Quest{
 
         HashMap<Integer, String> correctAnswer = new HashMap<>(Map.of(1, "fuchsite", 2 , "opal", 3,  "topaz", 4, "iridium", 5, "apatite"));
         HashMap<Integer, String> playerAnswer = new HashMap<>();
+        boolean firstAttempt = true;
         while(!playerAnswer.equals(correctAnswer)){
             playerAnswer.clear();
-            System.out.println("Put the gems in the correct order (write the correctly name of each gem)");
+            if(!firstAttempt){
+                System.out.println("The stones glow brightly for a moment, but the glow quickly fades");
+                System.out.println("Perhaps you should try another combination");
+            }
             for(int i = 1; i <= 5; i++){
                 String gem = sc.nextLine().toLowerCase();
                 playerAnswer.put(i, gem);
             }
+            firstAttempt = false;
         }
+        System.out.println("""
+                As the last stone clicks into place, the wall trembles. Slowly, a hidden door slides open,
+                 revealing a narrow corridor. The air smells of rotten fish. Something awaits you ahead.
+                """);
 
 
     }
