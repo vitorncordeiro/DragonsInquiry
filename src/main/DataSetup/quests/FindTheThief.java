@@ -9,7 +9,7 @@ public class FindTheThief extends Quest{
     Scanner sc = new Scanner(System.in);
 
     public FindTheThief(){
-        super("Blank");
+        super("find the thief", "Blank");
     }
     @Override
     public boolean isComplete(){

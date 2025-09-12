@@ -2,6 +2,7 @@ package main;
 
 import main.DataSetup.locations.Location;
 import main.DataSetup.locations.LocationData;
+import util.FileManager;
 
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
@@ -15,27 +16,18 @@ import java.util.Scanner;
 public class Main {
     public static Scanner scanner = new Scanner(System.in);
     public static LocationData locations = new LocationData();
-    public static void main(String[] args) {
+    public static FileManager fileManager = new FileManager();
 
-        try {
-            URL musicURL = Main.class.getResource("/musica.wav");
-            if (musicURL != null) {
-                Clip clip = AudioSystem.getClip();
-                clip.open(AudioSystem.getAudioInputStream(musicURL));
-                clip.loop(Clip.LOOP_CONTINUOUSLY); // loop infinito
-                clip.start();
-            } else {
-                System.err.println("Arquivo de música não encontrado!");
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    public static void main(String[] args) {
 
 
         System.out.println("Lets start the adventure");
-        Location currentLocation = locations.getLocations().get("camping");
+
+//        Location currentLocation = locations.getLocations().get("camping");
+        Location currentLocation = locations.getLocations().get(fileManager.load().get("location").get(0));
         boolean flag = true;
         while(flag){
+
             System.out.println("Current Location: " + currentLocation);
             System.out.println(currentLocation.getLocationDescription());
             currentLocation.getQuest().startQuest();

@@ -11,7 +11,7 @@ public class GemsChamber extends Quest {
     Scanner sc = new Scanner(System.in);
 
     public GemsChamber(){
-        super("caves entry");
+        super("gems chamber", "caves entry");
     }
 
     @Override

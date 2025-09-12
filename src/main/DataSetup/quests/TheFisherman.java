@@ -4,7 +4,7 @@ import java.util.HashMap;
 
 public class TheFisherman extends Quest {
     public TheFisherman(){
-        super("caves pond");
+        super("the fisherman", "caves pond");
     }
 
     @Override

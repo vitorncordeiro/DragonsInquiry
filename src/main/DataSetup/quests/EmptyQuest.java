@@ -7,7 +7,7 @@ import java.util.Map;
 
 public class EmptyQuest extends Quest {
     public EmptyQuest(){
-        super("Blank");
+        super("blank", "Blank");
 
 
 

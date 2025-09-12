@@ -4,7 +4,9 @@ import java.util.HashMap;
 
 public abstract class Quest {
     protected String locationWillBeChanged;
-    public Quest(String locationWillBeChanged){
+    protected String name;
+    public Quest(String name, String locationWillBeChanged){
+        this.name = name;
         this.locationWillBeChanged = locationWillBeChanged;
     }
 
