@@ -2,6 +2,7 @@ package main;
 
 import main.DataSetup.locations.Location;
 import main.DataSetup.locations.LocationData;
+import main.DataSetup.quests.QuestData;
 import util.FileManager;
 
 import javax.sound.sampled.AudioInputStream;
@@ -17,14 +18,28 @@ public class Main {
     public static Scanner scanner = new Scanner(System.in);
     public static LocationData locations = new LocationData();
     public static FileManager fileManager = new FileManager();
+    public static QuestData quests = new QuestData();
+
 
     public static void main(String[] args) {
 
 
         System.out.println("Lets start the adventure");
 
-//        Location currentLocation = locations.getLocations().get("camping");
-        Location currentLocation = locations.getLocations().get(fileManager.load().get("location").get(0));
+        Location currentLocation = locations.getLocations().get("camping");
+        if(fileManager.load().get("location") != null){
+            currentLocation = locations.getLocations().get(fileManager.load().get("location").get(0));
+            for(var q : quests.getQuests().entrySet()){
+                if(fileManager.load().get("quests").contains(q)){
+
+                }
+
+            }
+
+
+        }
+
+
         boolean flag = true;
         while(flag){
 

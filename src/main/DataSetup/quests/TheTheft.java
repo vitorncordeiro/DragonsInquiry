@@ -6,12 +6,16 @@ import java.util.Scanner;
 
 
 public class TheTheft extends Quest {
-    public static boolean isComplete = false;
+    private static boolean isComplete = false;
     private boolean unlocksSecretDirection = true;
     Scanner sc = new Scanner(System.in);
 
     public TheTheft(){
         super("the theft", "alley one");
+    }
+
+    public static void completeQuest(){
+        isComplete = true;
     }
     @Override
     public boolean unlocksSecretDirection(){

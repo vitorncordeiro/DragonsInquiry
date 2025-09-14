@@ -223,7 +223,7 @@ public class FindTheThief extends Quest{
         }
 
         System.out.println("\nYou recovered the stolen potion. The quest is complete.");
-        TheTheft.isComplete = true;
+        TheTheft.completeQuest();
     }
 
 

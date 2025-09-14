@@ -13,6 +13,11 @@ public abstract class Quest {
     public String getLocationWillBeChanged(){
         return locationWillBeChanged;
     }
+
+    public static void completeQuest(){
+        isComplete = true;
+    }
+
     public abstract void startQuest();
     public abstract boolean isComplete();
     public abstract boolean unlocksSecretDirection();
