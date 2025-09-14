@@ -11,6 +11,8 @@ import javax.sound.sampled.Clip;
 import java.io.File;
 import java.net.URL;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.Scanner;
 
 
@@ -26,15 +28,27 @@ public class Main {
 
         System.out.println("Lets start the adventure");
 
-        Location currentLocation = locations.getLocations().get("camping");
-        if(fileManager.load().get("location") != null){
-            currentLocation = locations.getLocations().get(fileManager.load().get("location").get(0));
+        Map<String, List<String>> savedData = fileManager.load();
+
+        Location currentLocation = locations.getLocations().get("camping"); // default
+
+        List<String> savedLocation = savedData.get("location");
+        if(savedLocation != null && !savedLocation.isEmpty() && savedLocation.get(0) != null){
+            String locName = savedLocation.get(0);
+            if(locations.getLocations().containsKey(locName)){
+                currentLocation = locations.getLocations().get(locName);
+            }
+        }
+
+        List<String> savedQuests = savedData.get("quests");
+        if(savedQuests != null && !savedQuests.isEmpty()){
             for(var q : quests.getQuests().values()){
-                if(fileManager.load().get("quests").contains(q.getName())){
+                if(savedQuests.contains(q.getName())){
                     q.completeQuest();
                 }
             }
         }
+
 
 
         boolean flag = true;
