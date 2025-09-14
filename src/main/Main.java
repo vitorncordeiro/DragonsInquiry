@@ -31,12 +31,9 @@ public class Main {
             currentLocation = locations.getLocations().get(fileManager.load().get("location").get(0));
             for(var q : quests.getQuests().values()){
                 if(fileManager.load().get("quests").contains(q.getName())){
-
+                    q.completeQuest();
                 }
-
             }
-
-
         }
 
 

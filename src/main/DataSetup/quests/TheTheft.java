@@ -6,7 +6,6 @@ import java.util.Scanner;
 
 
 public class TheTheft extends Quest {
-    private static boolean isComplete = false;
     private boolean unlocksSecretDirection = true;
     Scanner sc = new Scanner(System.in);
 
@@ -22,7 +21,7 @@ public class TheTheft extends Quest {
     }
     @Override
     public void startQuest(){
-        if(TheTheft.isComplete){
+        if(this.isCompleted()){
             endQuest();
             return;
         }
