@@ -1,5 +1,7 @@
 package main.DataSetup.quests;
 
+import util.FileManager;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;

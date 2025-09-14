@@ -1,16 +1,19 @@
 package util;
 
+import main.DataSetup.quests.Quest;
+
 import java.io.*;
 import java.util.*;
 
 public class FileManager {
+
     public static Map<String, List<String>> load(){
         File file = new File("src/save/save.txt");
 
         Map<String, List<String>> res = new HashMap<>();
 
         try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
-            res.put("location", Arrays.asList(bufferedReader.readLine()));
+            res.put("location", Collections.singletonList(bufferedReader.readLine()));
             String line;
             List<String> quests = new ArrayList<>();
             while((line = bufferedReader.readLine()) != null){
@@ -28,5 +31,19 @@ public class FileManager {
 
         return res;
     }
-    public static void save(){}
+    public static void save(String location){
+        File file = new File("src/save/save.txt");
+        try(BufferedWriter writer = new BufferedWriter(new FileWriter(file))){
+            writer.write(location);
+            writer.newLine();
+            for (var questName : Quest.getCompletedMap().keySet()) {
+                writer.write(questName.getName());
+                writer.newLine();
+            }
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+
 }

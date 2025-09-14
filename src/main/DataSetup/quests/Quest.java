@@ -6,7 +6,7 @@ import java.util.Map;
 public abstract class Quest {
     protected String locationWillBeChanged;
     protected String name;
-    private static final Map<Class<? extends Quest>, Boolean> completedMap = new HashMap<>();
+    private static Map<Class<? extends Quest>, Boolean> completedMap = new HashMap<>();
 
     public Quest(String name, String locationWillBeChanged){
         this.name = name;
@@ -15,6 +15,10 @@ public abstract class Quest {
 
     public String getLocationWillBeChanged(){
         return locationWillBeChanged;
+    }
+
+    public static Map<Class<? extends Quest>, Boolean> getCompletedMap(){
+        return completedMap;
     }
 
     public String getName(){

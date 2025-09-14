@@ -39,7 +39,7 @@ public class Main {
 
         boolean flag = true;
         while(flag){
-
+            FileManager.save(currentLocation.getLocationName());
             System.out.println("Current Location: " + currentLocation);
             System.out.println(currentLocation.getLocationDescription());
             currentLocation.getQuest().startQuest();

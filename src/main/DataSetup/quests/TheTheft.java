@@ -10,7 +10,7 @@ public class TheTheft extends Quest {
     Scanner sc = new Scanner(System.in);
 
     public TheTheft(){
-        super("the theft", "alley one");
+        super("main.DataSetup.quests.TheTheft", "alley one");
     }
     @Override
     public boolean unlocksSecretDirection(){
