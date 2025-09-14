@@ -13,20 +13,12 @@ public class TheTheft extends Quest {
     public TheTheft(){
         super("the theft", "alley one");
     }
-
-    public static void completeQuest(){
-        isComplete = true;
-    }
     @Override
     public boolean unlocksSecretDirection(){
         return unlocksSecretDirection;
     }
     public HashMap<String, String> getSecretDirection(){
         return new HashMap<>(Map.of("E", "caves entry"));
-    }
-    @Override
-    public boolean isComplete(){
-        return isComplete;
     }
     @Override
     public void startQuest(){

@@ -29,8 +29,8 @@ public class Main {
         Location currentLocation = locations.getLocations().get("camping");
         if(fileManager.load().get("location") != null){
             currentLocation = locations.getLocations().get(fileManager.load().get("location").get(0));
-            for(var q : quests.getQuests().entrySet()){
-                if(fileManager.load().get("quests").contains(q)){
+            for(var q : quests.getQuests().values()){
+                if(fileManager.load().get("quests").contains(q.getName())){
 
                 }
 
@@ -46,7 +46,7 @@ public class Main {
             System.out.println("Current Location: " + currentLocation);
             System.out.println(currentLocation.getLocationDescription());
             currentLocation.getQuest().startQuest();
-            if(currentLocation.getQuest().isComplete() && currentLocation.getQuest().unlocksSecretDirection() ){
+            if(currentLocation.getQuest().isCompleted() && currentLocation.getQuest().unlocksSecretDirection() ){
                 addSecretDirection(locations.getLocations().get(currentLocation.getQuest().getLocationWillBeChanged()), currentLocation.getQuest().getSecretDirection());
             }
 

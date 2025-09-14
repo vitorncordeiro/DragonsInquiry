@@ -22,8 +22,5 @@ public class TheFisherman extends Quest {
         return null;
     }
 
-    @Override
-    public boolean isComplete() {
-        return false;
-    }
+
 }

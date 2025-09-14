@@ -15,11 +15,6 @@ public class GemsChamber extends Quest {
     }
 
     @Override
-    public boolean isComplete(){
-        return isComplete;
-    }
-
-    @Override
     public boolean unlocksSecretDirection() {
         return false;
     }

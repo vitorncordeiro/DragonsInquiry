@@ -12,10 +12,7 @@ public class EmptyQuest extends Quest {
 
 
     }
-    @Override
-    public boolean isComplete(){
-        return true;
-    }
+
     public HashMap<String, String> getSecretDirection(){
         return new HashMap<>(Map.of("", ""));
     }

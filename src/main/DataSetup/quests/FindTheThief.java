@@ -11,10 +11,8 @@ public class FindTheThief extends Quest{
     public FindTheThief(){
         super("find the thief", "Blank");
     }
-    @Override
-    public boolean isComplete(){
-        return true;
-    }
+
+
     public HashMap<String, String> getSecretDirection(){
         return null;
     }
@@ -223,7 +221,8 @@ public class FindTheThief extends Quest{
         }
 
         System.out.println("\nYou recovered the stolen potion. The quest is complete.");
-        TheTheft.completeQuest();
+        Quest.completeQuest(TheTheft.class);
+
     }
 
 
