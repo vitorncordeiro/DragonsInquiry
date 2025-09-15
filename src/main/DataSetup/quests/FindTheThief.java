@@ -30,12 +30,15 @@ public class FindTheThief extends Quest{
         while(!FindTheThief.isComplete) {
             System.out.println("Despite the aura of rot, you notice three unusual figures:\n[1] A peculiar metamorphosed creature\n" +
                     "[2] A man inside a barrel\n" +
-                    "[3] A man who seems restless");
+                    "[3] A man who is talking to himself");
             System.out.println("\nYou may have questions. Approach one of them:");
-            switch (sc.nextLine()) {
-                case "1" -> talkMetamorphosedMan();
-                case "2" -> talkManInBarrel();
-                case "3" -> talkRestlessMan();
+            String ans = sc.nextLine().toLowerCase();
+            if(ans.contains("barrel")){
+                talkManInBarrel();
+            }else if(ans.contains("creature") || ans.contains("metamorphosed")){
+                talkMetamorphosedMan();
+            } else if(ans.contains("himself") || ans.contains("talking") || ans.contains("schizophrenic")) {
+                talkRestlessMan();
             }
         }
 
@@ -82,12 +85,11 @@ public class FindTheThief extends Quest{
                 """);
         System.out.println("The man infront of you is deliberately indescribable. However, his belly is brown, dome-shaped and segmented. Also, he seems to have " +
                 "many legs,\nand with his distorted voice, he ask you:\nGregor:\nWhat time is it? I think im going to be late!");
-        System.out.println("[1] Be late for what?");
         sc.nextLine();
-        System.out.println("Gregor:\nBeing late for work, of course. Common, tell me what time is it, if i'm late,\nmy boss will fire me, and my family will " +
-                "be desappointed in me.");
-        System.out.println("[1] Leave him to his madness, he is clearly hallucinating");
-        sc.nextLine();
+        System.out.println("Gregor:\nOh no! Im going to be late for work! My boss will fire me, and my family will " +
+                "be desappointed in me, excuse me.");
+        System.out.println("He turns his shell towards you");
+
     }
 
     public void talkManInBarrel(){

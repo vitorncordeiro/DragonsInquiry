@@ -29,7 +29,6 @@ public class Main {
 
 
         System.out.println("\u001B[33m" + "Lets start the adventure" + "\u001B[0m");
-
         Map<String, List<String>> savedData = fileManager.load();
 
         Location currentLocation = locations.getLocations().get("camping"); // default

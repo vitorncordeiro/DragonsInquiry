@@ -28,16 +28,19 @@ public class TheTheft extends Quest {
             return;
         }
         System.out.println("Walking around the village, a door from the alley opens and a merchant appears, calling you.");
-        sc.nextLine();
+        if(sc.nextLine().toLowerCase().contains("no") || sc.nextLine().toLowerCase().contains("don") || sc.nextLine().toLowerCase().contains("do not")){
+            System.out.println("Haha! You have no choice");
+        }
+
         System.out.println("You entered the merchant's shop");
         System.out.println("Kanon:");
         System.out.println("Hey outsider! I've already listen about you, and your mission here. Don't worry, I will help you..." +
                 "\nAs long as you help me with a troublemaker.");
         boolean flag = true;
         while(flag){
-            System.out.println("Are you in?" + "\nyes \nno");
+            System.out.println("Are you in?");
             String ans = sc.nextLine().toLowerCase();
-            if(ans.contains("ye") || ans.contains("sure") || ans.contains("alright")){
+            if(ans.contains("y") || ans.contains("sure") || ans.contains("alright")){
                 flag = false;
             }else if(ans.equalsIgnoreCase("negative") || ans.startsWith("n")){
                 System.out.println("Kanon:\n" + "It seems you dont know the local rules yet..." + "\nYou can't avoid the light path here. Let me try again");
@@ -45,9 +48,10 @@ public class TheTheft extends Quest {
                 System.out.println("Kanon:\n" + "Sorry outsider, i cant understand your accent.");
             }
         }
+        System.out.println("Kanon:");
         System.out.println("Alright, so listen carefully: Yesterday, a terrible event has befallen me. One of mine... perfume bottles... was stolen " +
                 "and the thief ran to the ghetto. As you can see,\n Im just an old man, and i cant go after him alone." +
-                "And there are you! I think you get my point. Take the ring back, and I will help you"
+                "And there are you! I think you get my point. Take the ring back, and I will help you\n"
 
         );
     }

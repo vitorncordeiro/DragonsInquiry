@@ -60,9 +60,7 @@ public class LocationData {
                         each other like broken teeth, their walls stitched with mold and despair. Ragged figures
                         huddle in the shadows, eyes hollow with hunger, their coughs echoing through the narrow alleys
                         like a dirge. Bandits loiter at corners, blades glinting faintly in the murk, while the sick
-                        sprawl along the cobblestones, reaching out with trembling hands that will never find mercy.
-                        The Ghetto is where the world deposits its refuse — the unwanted, the discarded, the forgotten.
-                        Here, misery is not an accident; it is the foundation on which everything else rests.""",
+                        sprawl along the cobblestones, reaching out with trembling hands that will never find mercy.""",
                         new FindTheThief(player),
                         new HashMap<>(Map.of("N", "alley one")))
 
