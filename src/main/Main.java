@@ -28,7 +28,7 @@ public class Main {
     public static void main(String[] args) {
 
 
-        System.out.println("Lets start the adventure");
+        System.out.println("\u001B[33m" + "Lets start the adventure" + "\u001B[0m");
 
         Map<String, List<String>> savedData = fileManager.load();
 

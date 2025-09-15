@@ -27,16 +27,19 @@ public class TheTheft extends Quest {
             endQuest();
             return;
         }
+        System.out.println("Walking around the village, a door from the alley opens and a merchant appears, calling you.");
+        sc.nextLine();
+        System.out.println("You entered the merchant's shop");
         System.out.println("Kanon:");
         System.out.println("Hey outsider! I've already listen about you, and your mission here. Don't worry, I will help you..." +
                 "\nAs long as you help me with a troublemaker.");
         boolean flag = true;
         while(flag){
-            System.out.println("Are you in?" + "\n[Y]es \n[N]o");
-            String ans = sc.nextLine();
-            if(ans.equalsIgnoreCase("Y")){
+            System.out.println("Are you in?" + "\nyes \nno");
+            String ans = sc.nextLine().toLowerCase();
+            if(ans.contains("ye") || ans.contains("sure") || ans.contains("alright")){
                 flag = false;
-            }else if(ans.equalsIgnoreCase("N")){
+            }else if(ans.equalsIgnoreCase("negative") || ans.startsWith("n")){
                 System.out.println("Kanon:\n" + "It seems you dont know the local rules yet..." + "\nYou can't avoid the light path here. Let me try again");
             }else{
                 System.out.println("Kanon:\n" + "Sorry outsider, i cant understand your accent.");
