@@ -1,19 +1,14 @@
 package main.DataSetup.quests;
 
 import main.DataSetup.entities.Player;
-import main.DataSetup.quests.Quest;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class EmptyQuest extends Quest {
-    public EmptyQuest(Player player){
-        super("blank", "Blank", player);
-
-
-
+public class ClimbTheTree extends Quest{
+    public ClimbTheTree(Player player){
+        super("climb the three", "camping", player);
     }
-
     public HashMap<String, String> getSecretDirection(){
         return null;
     }
@@ -24,5 +19,4 @@ public class EmptyQuest extends Quest {
     public void startQuest(){
         System.out.print("");
     }
-
 }

@@ -9,9 +9,11 @@ public abstract class Quest {
     protected String locationWillBeChanged;
     protected String name;
     private static Map<Class<? extends Quest>, Boolean> completedMap = new HashMap<>();
+    private Player player;
 
     public Quest(String name, String locationWillBeChanged, Player player){
         this.name = name;
+        this.player = player;
         this.locationWillBeChanged = locationWillBeChanged;
     }
 
@@ -26,7 +28,9 @@ public abstract class Quest {
     public String getName(){
         return name;
     }
-
+    public Player getPlayer(){
+        return player;
+    }
     public void completeQuest(){
         completedMap.put(this.getClass(), true);
     }

@@ -99,10 +99,10 @@ public class FindTheThief extends Quest{
         System.out.println("Tell me, stranger... do you seek something material, or do you seek truth?");
         System.out.println("[1] I'm looking for a stolen bottle.");
         System.out.println("[2] Truth, if such a thing exists here.");
-        String choice = sc.nextLine();
-        if(choice.equals("1")){
+        String ans = sc.nextLine().toLowerCase();
+        if(ans.contains("material") || ans.contains("bottle")){
             System.out.println("Barrel Man:\nThen you are already enslaved. Material goods is the leash that binds fools.\nLeave me, I have nothing for you.");
-        } else if(choice.equals("2")){
+        } else if(ans.contains("truth")){
             System.out.println("Barrel Man:\nTruth? Then abandon your hunger, your fear, your pride.\nLive as I do — with nothing, yet lacking nothing.");
             System.out.println("He chuckles, a hollow sound echoing in the barrel, as if the wood itself mocks you.");
         } else {
@@ -114,121 +114,105 @@ public class FindTheThief extends Quest{
         boolean confessed = false;
         boolean potionReturned = false;
         boolean spokeToJekyll = false;
-        boolean angeredHyde = false;
 
         System.out.println("""
-                
-                A man trembles in the shadows, his coat tattered yet marked with 
-                the remnants of once-refined tailoring. His eyes dart wildly, 
-                as though two beasts wrestle behind them.
-                
-                Restless Man:
-                "I... forgive me. These fits... they are not mine. 
-                Another walks within me... and I cannot keep him caged..."
-                
-                """);
+            
+            A man trembles in the shadows, his coat tattered yet marked with 
+            the remnants of once-refined tailoring. His eyes dart wildly, 
+            as though two beasts wrestle behind them.
+            
+            Restless Man:
+            "I... forgive me. These fits... they are not mine. 
+            Another walks within me... and I cannot keep him caged..."
+            
+            """);
 
-        // --- First loop: uncover the theft ---
+        // --- Primeira parte: descobrir o roubo ---
         while(!confessed){
             System.out.println("What will you do?");
-            System.out.println("[1] Ask gently about his condition.");
-            System.out.println("[2] Question him about the stolen potion.");
-            System.out.println("[3] Accuse him directly of theft.");
+            String input = sc.nextLine().toLowerCase();
 
-            String choice = sc.nextLine();
+            if(input.contains("condition") || input.contains("health") || input.contains("ask")){
+                if(!spokeToJekyll){
+                    System.out.println("You: You seem tormented. Speak — what gnaws at you?");
+                    System.out.println("Dr. Jekyll: \"I sought to master the darkness of man... "
+                            + "instead, I gave it flesh. He... Hyde... he wears my face when I falter.\"");
+                    spokeToJekyll = true;
+                } else {
+                    System.out.println("Dr. Jekyll: \"Each sip of that cursed draught frees him. "
+                            + "And now... now I am slave to my own creation.\"");
+                }
 
-            switch(choice){
-                case "1" -> {
-                    if(!spokeToJekyll){
-                        System.out.println("You: You seem tormented. Speak — what gnaws at you?");
-                        System.out.println("Dr. Jekyll: \"I sought to master the darkness of man... "
-                                + "instead, I gave it flesh. He... Hyde... he wears my face when I falter.\"");
-                        spokeToJekyll = true;
-                    } else {
-                        System.out.println("Dr. Jekyll: \"Each sip of that cursed draught frees him. "
-                                + "And now... now I am slave to my own creation.\"");
-                    }
+            } else if(input.contains("stolen") || input.contains("potion") || input.contains("bottle")){
+                if(!spokeToJekyll){
+                    System.out.println("You: The merchant claims a potion was stolen. Were you there?");
+                    System.out.println("The man’s lips curl into a jagged grin, voice twisting low.");
+                    System.out.println("Mr. Hyde: \"Potion? Hah! Sweet nectar! I stole it, yes. "
+                            + "His trembling hands could never guard such power.\"");
+                } else {
+                    System.out.println("Dr. Jekyll clutches his chest, voice breaking.");
+                    System.out.println("Dr. Jekyll: \"It was him... Hyde... he took it. "
+                            + "But my hands were his. My guilt is complete.\"");
                 }
-                case "2" -> {
-                    if(!spokeToJekyll){
-                        System.out.println("You: The merchant claims a potion was stolen. Were you there?");
-                        System.out.println("The man’s lips curl into a jagged grin, voice twisting low.");
-                        System.out.println("Mr. Hyde: \"Potion? Hah! Sweet nectar! I stole it, yes. "
-                                + "His trembling hands could never guard such power.\"");
-                        confessed = true;
-                    } else {
-                        System.out.println("Dr. Jekyll clutches his chest, voice breaking.");
-                        System.out.println("Dr. Jekyll: \"It was him... Hyde... he took it. "
-                                + "But my hands were his. My guilt is complete.\"");
-                        confessed = true;
-                    }
-                }
-                case "3" -> {
-                    System.out.println("You: Enough lies! You stole the potion!");
-                    System.out.println("Mr. Hyde erupts, a cruel laugh splitting the silence.");
-                    System.out.println("Mr. Hyde: \"Clever little worm... yes, I took it! And I would drink "
-                            + "a thousand more, if only to silence gnats like you!\"");
-                    confessed = true;
-                    angeredHyde = true;
-                }
-                default -> System.out.println("The man shivers, whispering curses to the shadows.");
+                confessed = true;
+
+            } else if(input.contains("accuse") || input.contains("thief") || input.contains("liar")){
+                System.out.println("You: Enough lies! You stole the potion!");
+                System.out.println("Mr. Hyde erupts, a cruel laugh splitting the silence.");
+                System.out.println("Mr. Hyde: \"Clever little worm... yes, I took it! And I would drink "
+                        + "a thousand more, if only to silence gnats like you!\"");
+                confessed = true;
+
+            } else {
+                System.out.println("The man shivers, whispering curses to the shadows.");
             }
         }
 
-        // --- Second loop: recover the potion ---
+        // --- Segunda parte: recuperar a poção ---
         while(!potionReturned){
             System.out.println("\nThe truth is laid bare. Now you must reclaim the stolen potion.");
-            System.out.println("[1] Appeal to Dr. Jekyll’s remorse.");
-            System.out.println("[2] Reason with him, offering mercy if he returns it.");
-            System.out.println("[3] Threaten Mr. Hyde.");
-            System.out.println("[4] Mock Hyde’s weakness.");
+            String input = sc.nextLine().toLowerCase();
 
-            String choice2 = sc.nextLine();
+            if(input.contains("remorse") || input.contains("jekyll") || input.contains("appeal")){
+                System.out.println("You: Jekyll, the potion is poison to your soul. Give it back — "
+                        + "end this torment before it ends you.");
+                System.out.println("Dr. Jekyll: \"You speak true... My crime festers within me. "
+                        + "Take it, before he drinks again...\"");
+                potionReturned = true;
+                FindTheThief.isComplete = true;
 
-            switch(choice2){
-                case "1" -> {
-                    System.out.println("You: Jekyll, the potion is poison to your soul. Give it back — "
-                            + "end this torment before it ends you.");
-                    System.out.println("Dr. Jekyll: \"You speak true... My crime festers within me. "
-                            + "Take it, before he drinks again...\"");
-                    System.out.println("With trembling hands, he produces a vial — the stolen potion — "
-                            + "and presses it into your palm.");
-                    potionReturned = true;
-                    FindTheThief.isComplete = true;
-                }
-                case "2" -> {
-                    System.out.println("You: Return the potion, and I will not speak of this. You may yet find peace.");
-                    System.out.println("Dr. Jekyll bows his head, shame dripping from his words.");
-                    System.out.println("Dr. Jekyll: \"Mercy... after all I’ve done? You are kinder than I deserve. "
-                            + "Take it, then.\"");
-                    System.out.println("He yields the vial, tears streaking down his face.");
-                    potionReturned = true;
-                    FindTheThief.isComplete = true;
-                }
-                case "3" -> {
-                    System.out.println("You: Hyde! If you resist me, I will end you where you stand.");
-                    System.out.println("Mr. Hyde sneers, voice dripping venom.");
-                    System.out.println("Mr. Hyde: \"End me? Hah! You end nothing. Still... this toy bores me.\"");
-                    System.out.println("He tosses the potion to the ground, grinning as if mocking your triumph.");
-                    potionReturned = true;
-                    FindTheThief.isComplete = true;
-                }
-                case "4" -> {
-                    System.out.println("You: Is this all Hyde amounts to? A thief hiding behind Jekyll’s weakness?");
-                    System.out.println("Mr. Hyde’s grin freezes, his eyes narrowing to slits.");
-                    System.out.println("Mr. Hyde: \"Mock me? Foolish insect... I will carve your laughter from your throat!\"");
-                    System.out.println("Before you can react, he lunges. Teeth, claws, madness — you feel your life torn away.");
-                    System.out.println("\n--- GAME OVER ---");
-                    System.exit(0);
-                }
-                default -> System.out.println("The man claws at his face, muttering incoherently.");
+            } else if(input.contains("reason") || input.contains("mercy") || input.contains("peace")){
+                System.out.println("You: Return the potion, and I will not speak of this. You may yet find peace.");
+                System.out.println("Dr. Jekyll bows his head, shame dripping from his words.");
+                System.out.println("Dr. Jekyll: \"Mercy... after all I’ve done? You are kinder than I deserve. "
+                        + "Take it, then.\"");
+                potionReturned = true;
+                FindTheThief.isComplete = true;
+
+            } else if(input.contains("threat") || input.contains("fight") || input.contains("kill")){
+                System.out.println("You: Hyde! If you resist me, I will end you where you stand.");
+                System.out.println("Mr. Hyde sneers, voice dripping venom.");
+                System.out.println("Mr. Hyde: \"End me? Hah! You end nothing. Still... this toy bores me.\"");
+                System.out.println("He tosses the potion to the ground, grinning as if mocking your triumph.");
+                potionReturned = true;
+                FindTheThief.isComplete = true;
+
+            } else if(input.contains("mock") || input.contains("weak") || input.contains("coward")){
+                System.out.println("You: Is this all Hyde amounts to? A thief hiding behind Jekyll’s weakness?");
+                System.out.println("Mr. Hyde’s grin freezes, his eyes narrowing to slits.");
+                System.out.println("Mr. Hyde: \"Mock me? Foolish insect... I will carve your laughter from your throat!\"");
+                System.out.println("\n\\u001B[31m--- GAME OVER ---\\u001B[0m");
+                System.exit(0);
+
+            } else {
+                System.out.println("The man claws at his face, muttering incoherently.");
             }
         }
 
         System.out.println("\nYou recovered the stolen potion. The quest is complete.");
-        Quest.completeQuest(TheTheft.class);
-
+        Quest.completeQuest(FindTheThief.class);
     }
+
 
 
 }

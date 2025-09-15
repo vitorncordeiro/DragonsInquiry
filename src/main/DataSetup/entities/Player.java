@@ -11,4 +11,11 @@ public class Player {
     public Player(){
         inventory = new LinkedList<>();
     }
+    public void showInventory(){
+        inventory.forEach(System.out::println);
+    }
+    public String addItemToInventory(String item){
+        inventory.add(item);
+        return "[" +  item + " added to inventory]";
+    }
 }

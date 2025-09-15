@@ -60,7 +60,7 @@ public class TheTheft extends Quest {
                 "to the west of here, there is a tower, where an intelligent, brilliant, magnificent wizard lives.\nGo there " +
                 "and talk to him, perhaps he will help you with your... illness.\n Take this lamp, and go to the south, then, you may notice the cave entry in east." +
                 "\nTake care of yourself, outsider. in spite of not needed to pay bills for the road toll, the danger is in that cave.");
-        System.out.println("[You received a Lamp]");
+        getPlayer().addItemToInventory("Lamp");
 
     }
 }
