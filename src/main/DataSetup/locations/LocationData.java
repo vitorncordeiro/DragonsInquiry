@@ -1,16 +1,14 @@
 package main.DataSetup.locations;
 
-import main.DataSetup.quests.FindTheThief;
-import main.DataSetup.quests.GemsChamber;
-import main.DataSetup.quests.TheFisherman;
-import main.DataSetup.quests.TheTheft;
+import main.DataSetup.entities.Player;
+import main.DataSetup.quests.*;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class LocationData {
     private Map<String, Location> locations;
-    public LocationData(){
+    public LocationData(Player player){
 
         this.locations = new HashMap<>(Map.ofEntries(
                 Map.entry("camping", new Location("camping",
@@ -20,7 +18,10 @@ public class LocationData {
                         It is a fleeting refuge, ever at the mercy of the wandering winds.
                         
                         """,
+                        new EmptyQuest(player),
                         new HashMap<>(Map.of("S", "village")))
+
+
                 ),
 
                 Map.entry("village", new Location("village",
@@ -29,8 +30,9 @@ public class LocationData {
                         The houses, with cold walls and roofs darkened by time, seem more like tombs than homes.
                         A few chimneys still emit smoke, and the air carries a heavy silence, broken only by shuffling footsteps on the stone streets.
                         Here, life doesn't flourish: it resists.""",
-                        new HashMap<>(Map.of( "N", "camping", "S", "alley one")),
-                        new TheTheft())
+                        new TheTheft(player),
+                        new HashMap<>(Map.of( "N", "camping", "S", "alley one")))
+
                 ),
                 Map.entry("alley one", new Location("alley one",
                         """
@@ -38,6 +40,7 @@ public class LocationData {
                                 their worn arches steady despite the years. Moss and ivy trace their
                                 edges, and the faint creak of old lanterns sways in the breeze. Crossing
                                 feels like stepping into a quieter, older part of the world, where time lingers differently.""",
+                        new EmptyQuest(player),
                         new HashMap<>(Map.of("N", "village", "S", "ghetto", "W", "road toll")))
                 ),
                 Map.entry("road toll", new Location("road toll", """
@@ -46,6 +49,7 @@ public class LocationData {
                         reason, his voice thick with mockery. Travelers speak of few who ever 
                         pay the toll — most turn back, for the price is heavier than any purse could bear.
                         """,
+                        new EmptyQuest(player),
                         new HashMap<>(Map.of("E", "alley one", "W", "mountain"
                         )))
                 ),
@@ -59,16 +63,18 @@ public class LocationData {
                         sprawl along the cobblestones, reaching out with trembling hands that will never find mercy.
                         The Ghetto is where the world deposits its refuse — the unwanted, the discarded, the forgotten.
                         Here, misery is not an accident; it is the foundation on which everything else rests.""",
-                        new HashMap<>(Map.of("N", "alley one")),
-                        new FindTheThief())
+                        new FindTheThief(player),
+                        new HashMap<>(Map.of("N", "alley one")))
+
+
                 ),
                 Map.entry("caves entry", new Location("caves entry",
                         """
                         You notice the secret entry that the merchant had told you, and wonder how you didn't realize before.
                         As you enter the cave, you light the torch that the merchant gave you.
                         As the flame flares, the entire cave's chamber is revealed to you.""",
-                        new HashMap<>(Map.of("W", "caves lakes")),
-                        new GemsChamber())
+                        new GemsChamber(player),
+                        new HashMap<>(Map.of("W", "caves lakes")))
                 ),
                 Map.entry("caves lake", new Location("caves lakes",
                         """
@@ -76,8 +82,8 @@ public class LocationData {
                                 Leaving the corridor, the claustrophobic feeling disappears, and you cant believe in your eyes:
                                 An unimaginably large lake, its surface shrouded by a thick layer of green film that swallows every reflection.
                                 """,
-                        new HashMap<>(Map.of("W", "")),
-                        new TheFisherman())
+                        new TheFisherman(player),
+                        new HashMap<>(Map.of("W", "")))
                 )
         ));
 

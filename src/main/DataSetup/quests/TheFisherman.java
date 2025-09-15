@@ -1,10 +1,12 @@
 package main.DataSetup.quests;
 
+import main.DataSetup.entities.Player;
+
 import java.util.HashMap;
 
 public class TheFisherman extends Quest {
-    public TheFisherman(){
-        super("the fisherman", "caves pond");
+    public TheFisherman(Player player){
+        super("the fisherman", "caves pond", player);
     }
 
     @Override

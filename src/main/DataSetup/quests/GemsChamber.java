@@ -1,5 +1,6 @@
 package main.DataSetup.quests;
 
+import main.DataSetup.entities.Player;
 import main.DataSetup.quests.Quest;
 
 import java.util.HashMap;
@@ -10,8 +11,8 @@ public class GemsChamber extends Quest {
     public static boolean isComplete = false;
     Scanner sc = new Scanner(System.in);
 
-    public GemsChamber(){
-        super("gems chamber", "caves entry");
+    public GemsChamber(Player player){
+        super("gems chamber", "caves entry", player);
     }
 
     @Override

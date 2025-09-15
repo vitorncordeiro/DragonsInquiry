@@ -13,16 +13,11 @@ public class Location {
     protected String asciiArt;
     protected Quest quest;
 
-    public Location(String locationName, String locationDescription, Map<String, String> nextPlaces){
-        this(locationName, locationDescription, nextPlaces, new EmptyQuest(), "");
+    public Location(String locationName, String locationDescription, Quest quest, Map<String, String> nextPlaces){
+        this(locationName, locationDescription, quest, nextPlaces, "");
     }
-    public Location(String locationName, String locationDescription, Map<String, String> nextPlaces, Quest quest){
-        this(locationName, locationDescription, nextPlaces, quest, "");
-    }
-    public Location(String locationName, String locationDescription, Map<String, String> nextPlaces, String asciiArt){
-        this(locationName, locationDescription, nextPlaces, new EmptyQuest(), asciiArt);
-    }
-    public Location(String locationName, String locationDescription, Map<String, String> nextPlaces, Quest quest, String asciiArt){
+
+    public Location(String locationName, String locationDescription, Quest quest, Map<String, String> nextPlaces, String asciiArt){
         this.locationDescription = locationDescription;
         this.nextPlaces = nextPlaces;
         this.asciiArt = asciiArt;

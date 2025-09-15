@@ -1,5 +1,7 @@
 package main.DataSetup.quests;
 
+import main.DataSetup.entities.Player;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -8,7 +10,7 @@ public abstract class Quest {
     protected String name;
     private static Map<Class<? extends Quest>, Boolean> completedMap = new HashMap<>();
 
-    public Quest(String name, String locationWillBeChanged){
+    public Quest(String name, String locationWillBeChanged, Player player){
         this.name = name;
         this.locationWillBeChanged = locationWillBeChanged;
     }

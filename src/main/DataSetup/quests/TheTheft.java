@@ -1,5 +1,7 @@
 package main.DataSetup.quests;
 
+import main.DataSetup.entities.Player;
+
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -9,8 +11,8 @@ public class TheTheft extends Quest {
     private boolean unlocksSecretDirection = true;
     Scanner sc = new Scanner(System.in);
 
-    public TheTheft(){
-        super("main.DataSetup.quests.TheTheft", "alley one");
+    public TheTheft(Player player){
+        super("main.DataSetup.quests.TheTheft", "alley one", player);
     }
     @Override
     public boolean unlocksSecretDirection(){
@@ -49,9 +51,9 @@ public class TheTheft extends Quest {
     public void endQuest(){
         System.out.println("Kanon:\nVery well, outsider, I see you didnt come back empty-handed. Holding up my end,\n" +
                 "to the west of here, there is a tower, where an intelligent, brilliant, magnificent wizard lives.\nGo there " +
-                "and talk to him, perhaps he will help you with your... illness.\n Take this torch, and go to the south, then, you may notice the cave entry in east." +
+                "and talk to him, perhaps he will help you with your... illness.\n Take this lamp, and go to the south, then, you may notice the cave entry in east." +
                 "\nTake care of yourself, outsider. in spite of not needed to pay bills for the road toll, the danger is in that cave.");
-        System.out.println("[You received a Torch]");
+        System.out.println("[You received a Lamp]");
 
     }
 }

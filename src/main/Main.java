@@ -1,5 +1,6 @@
 package main;
 
+import main.DataSetup.entities.Player;
 import main.DataSetup.locations.Location;
 import main.DataSetup.locations.LocationData;
 import main.DataSetup.quests.QuestData;
@@ -17,10 +18,11 @@ import java.util.Scanner;
 
 
 public class Main {
+    public static Player player = new Player();
     public static Scanner scanner = new Scanner(System.in);
-    public static LocationData locations = new LocationData();
+    public static LocationData locations = new LocationData(player);
     public static FileManager fileManager = new FileManager();
-    public static QuestData quests = new QuestData();
+    public static QuestData quests = new QuestData(player);
 
 
     public static void main(String[] args) {
@@ -61,7 +63,7 @@ public class Main {
                 addSecretDirection(locations.getLocations().get(currentLocation.getQuest().getLocationWillBeChanged()), currentLocation.getQuest().getSecretDirection());
             }
 
-            System.out.println("Choose an direction:\n" + locations.getLocations().get(currentLocation.getLocationName()).showNextPlaces());
+            System.out.println("In which direction do you want to go?");
             String direction = scanner.nextLine().toUpperCase();
             if(locations.getLocations().get(currentLocation.getLocationName()).getNextPlaces().containsKey(direction) || direction.equals("Q")){
                 switch(direction){
@@ -75,8 +77,6 @@ public class Main {
                 System.out.println("From here, the wind doesnt blow in that direction");
             }
         }
-
-
     }
     public static void addSecretDirection(Location location, HashMap<String, String> map){
         location.getNextPlaces().putAll(map);

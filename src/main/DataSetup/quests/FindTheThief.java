@@ -1,5 +1,6 @@
 package main.DataSetup.quests;
 
+import main.DataSetup.entities.Player;
 import util.FileManager;
 
 import java.util.HashMap;
@@ -10,8 +11,8 @@ public class FindTheThief extends Quest{
     public static boolean isComplete = false;
     Scanner sc = new Scanner(System.in);
 
-    public FindTheThief(){
-        super("find the thief", "Blank");
+    public FindTheThief(Player player){
+        super("find the thief", "Blank", player);
     }
 
 
