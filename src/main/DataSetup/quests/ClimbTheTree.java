@@ -10,7 +10,7 @@ import java.util.Scanner;
 public class ClimbTheTree extends Quest{
     Scanner sc = new Scanner(System.in);
     public ClimbTheTree(Player player){
-        super("climb the three", "camping", player);
+        super("main.DataSetup.quests.ClimTheTree", "camping", player);
     }
     public HashMap<String, String> getSecretDirection(){
         return null;

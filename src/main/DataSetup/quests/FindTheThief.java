@@ -132,7 +132,6 @@ public class FindTheThief extends Quest{
 
             if(input.contains("condition") || input.contains("health") || input.contains("ask")){
                 if(!spokeToJekyll){
-                    System.out.println("You: You seem tormented. Speak — what gnaws at you?");
                     System.out.println("Dr. Jekyll: \"I sought to master the darkness of man... "
                             + "instead, I gave it flesh. He... Hyde... he wears my face when I falter.\"");
                     spokeToJekyll = true;
@@ -143,7 +142,6 @@ public class FindTheThief extends Quest{
 
             } else if(input.contains("stolen") || input.contains("potion") || input.contains("bottle")){
                 if(!spokeToJekyll){
-                    System.out.println("You: The merchant claims a potion was stolen. Were you there?");
                     System.out.println("The man’s lips curl into a jagged grin, voice twisting low.");
                     System.out.println("Mr. Hyde: \"Potion? Hah! Sweet nectar! I stole it, yes. "
                             + "His trembling hands could never guard such power.\"");
@@ -155,7 +153,6 @@ public class FindTheThief extends Quest{
                 confessed = true;
 
             } else if(input.contains("accuse") || input.contains("thief") || input.contains("liar")){
-                System.out.println("You: Enough lies! You stole the potion!");
                 System.out.println("Mr. Hyde erupts, a cruel laugh splitting the silence.");
                 System.out.println("Mr. Hyde: \"Clever little worm... yes, I took it! And I would drink "
                         + "a thousand more, if only to silence gnats like you!\"");
@@ -188,7 +185,6 @@ public class FindTheThief extends Quest{
                 FindTheThief.isComplete = true;
 
             } else if(input.contains("threat") || input.contains("fight") || input.contains("kill")){
-                System.out.println("You: Hyde! If you resist me, I will end you where you stand.");
                 System.out.println("Mr. Hyde sneers, voice dripping venom.");
                 System.out.println("Mr. Hyde: \"End me? Hah! You end nothing. Still... this toy bores me.\"");
                 System.out.println("He tosses the potion to the ground, grinning as if mocking your triumph.");
@@ -208,7 +204,7 @@ public class FindTheThief extends Quest{
         }
 
         System.out.println("\nYou recovered the stolen potion. The quest is complete.");
-        Quest.completeQuest(FindTheThief.class);
+        Quest.completeQuest(TheTheft.class);
     }
 
 
