@@ -10,7 +10,8 @@ public class QuestData {
 
     public QuestData(Player player){
         this.quests = new HashMap<>(Map.of(
-                "the theft", new TheTheft(player)
+                "the theft", new TheTheft(player),
+                "climb the tree", new ClimbTheTree(player)
         )
         );
     }

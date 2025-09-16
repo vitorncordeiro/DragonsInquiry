@@ -1,7 +1,9 @@
 package main.DataSetup.quests;
 
 import main.DataSetup.entities.Player;
+import main.DataSetup.entities.items.Item;
 
+import java.sql.SQLOutput;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
@@ -45,7 +47,20 @@ public class TheTheft extends Quest {
                 flag = false;
             }else if(ans.equalsIgnoreCase("negative") || ans.startsWith("n")){
                 System.out.println("Kanon:\n" + "It seems you dont know the local rules yet..." + "\nYou can't avoid the light path here. Let me try again");
-            }else{
+            }else if(ans.equals("banishment") && getPlayer().hasItem("banishment scroll")){
+                System.out.println("""
+                        W-what...? You… how dare you utter that name before me?!
+                        Foolish mortal… I was so close. Hidden among you, peddling worthless trinkets while harvesting souls with every deal.
+                        And now… banishment?!
+                        No… NO!! That spell should not even exist here…!*
+
+                        You’ve undone everything before it even began…
+                        — cursed be you, impatient player…"""
+                        );
+                System.out.println("--End--");
+                System.exit(0);
+
+            } else{
                 System.out.println("Kanon:\n" + "Sorry outsider, i cant understand your accent.");
             }
         }
@@ -61,7 +76,7 @@ public class TheTheft extends Quest {
                 "to the west of here, there is a tower, where an intelligent, brilliant, magnificent wizard lives.\nGo there " +
                 "and talk to him, perhaps he will help you with your... illness.\n Take this lamp, and go to the south, then, you may notice the cave entry in east." +
                 "\nTake care of yourself, outsider. in spite of not needed to pay bills for the road toll, the danger is in that cave.");
-        getPlayer().addItemToInventory("Lamp");
+        getPlayer().addItemToInventory(new Item("Lamp", "A crooked brass lamp, its surface mottled with green corrosion and dark stains that look unsettlingly like dried blood."));
 
     }
 }
