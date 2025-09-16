@@ -18,7 +18,7 @@ public class LocationData {
                         It is a fleeting refuge, ever at the mercy of the wandering winds.
                         
                         """,
-                        new EmptyQuest(player),
+                        new ClimbTheTree(player),
                         new HashMap<>(Map.of("S", "village")))
 
 

@@ -27,14 +27,15 @@ public class TheTheft extends Quest {
             endQuest();
             return;
         }
-        System.out.println("Walking around the village, a door from the alley opens and a merchant appears, calling you.");
-        if(sc.nextLine().toLowerCase().contains("no") || sc.nextLine().toLowerCase().contains("don") || sc.nextLine().toLowerCase().contains("do not")){
+        System.out.println("Walking around the village, a door from the alley opens and an old merchant appears, calling you.");
+        String entryAns = sc.nextLine().toLowerCase();
+        if(entryAns.contains("no") || entryAns.contains("don") || entryAns.contains("do not")){
             System.out.println("Haha! You have no choice");
         }
 
         System.out.println("You entered the merchant's shop");
         System.out.println("Kanon:");
-        System.out.println("Hey outsider! I've already listen about you, and your mission here. Don't worry, I will help you..." +
+        System.out.println("Hey outsider! I've already listen about you, and how you looks like sick. Don't worry, I will help you..." +
                 "\nAs long as you help me with a troublemaker.");
         boolean flag = true;
         while(flag){
@@ -50,8 +51,8 @@ public class TheTheft extends Quest {
         }
         System.out.println("Kanon:");
         System.out.println("Alright, so listen carefully: Yesterday, a terrible event has befallen me. One of mine... perfume bottles... was stolen " +
-                "and the thief ran to the ghetto. As you can see,\n Im just an old man, and i cant go after him alone." +
-                "And there are you! I think you get my point. Take the ring back, and I will help you\n"
+                "and the thief ran to the ghetto, to the south. As you can see,\n Im just an old man, and i cant go after him alone." +
+                " And there are you! I think you get my point. Take the bottle back, and I will help you\n"
 
         );
     }

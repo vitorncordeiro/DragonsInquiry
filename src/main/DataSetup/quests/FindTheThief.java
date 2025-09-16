@@ -28,9 +28,9 @@ public class FindTheThief extends Quest{
     public void startQuest(){
 
         while(!FindTheThief.isComplete) {
-            System.out.println("Despite the aura of rot, you notice three unusual figures:\n[1] A peculiar metamorphosed creature\n" +
-                    "[2] A man inside a barrel\n" +
-                    "[3] A man who is talking to himself");
+            System.out.println("Despite the aura of rot, you notice three unusual figures:\nA peculiar metamorphosed creature\n" +
+                    "A man inside a barrel\n" +
+                    "A man who is talking to himself");
             System.out.println("\nYou may have questions. Approach one of them:");
             String ans = sc.nextLine().toLowerCase();
             if(ans.contains("barrel")){
@@ -97,8 +97,6 @@ public class FindTheThief extends Quest{
         System.out.println("and despite the stench around him, he sits as if he were a king on a throne.");
         System.out.println("Barrel Man:\nI have chosen freedom over chains, and my barrel over palaces.");
         System.out.println("Tell me, stranger... do you seek something material, or do you seek truth?");
-        System.out.println("[1] I'm looking for a stolen bottle.");
-        System.out.println("[2] Truth, if such a thing exists here.");
         String ans = sc.nextLine().toLowerCase();
         if(ans.contains("material") || ans.contains("bottle")){
             System.out.println("Barrel Man:\nThen you are already enslaved. Material goods is the leash that binds fools.\nLeave me, I have nothing for you.");
