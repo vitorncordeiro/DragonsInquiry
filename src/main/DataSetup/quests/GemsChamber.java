@@ -27,14 +27,23 @@ public class GemsChamber extends Quest {
 
     @Override
     public void startQuest(){
+        boolean reactionFlag = true;
+        while(reactionFlag){
+            String reaction = sc.nextLine().toLowerCase();
+            if(reaction.equals("lamp") || reaction.contains("on")){
+                reactionFlag = false;
+            } else{
+                System.out.println("You try to walk in the cave, until you slip, and you wonder if there any solution that you dont think of before ");
+            }
+        }
+
+
         System.out.println("At the center of the cavern, a gem pedestal with an ancient inscription, worn out by time, take your attention.");
         System.out.println("Above the pedestal, you see five shiny gems: an iridium, an opal, a fuchsite, a apatite and a topaz");
-        System.out.println("What will you do?");
-        System.out.println("[1] Approach to pedestal and try to read the inscription");
-        System.out.println("[2] Foolishly put the gems in your pocket");
-        String decision = sc.nextLine();
+        System.out.println("What will you do? Maybe put then in your pockets");
+        String decision = sc.nextLine().toLowerCase();
 
-        if(decision.equals("2")){
+        if(decision.contains("pocket") || decision.contains("bag")){
             System.out.println("The gems that you inconsequentially put in your pockets began to vibrate and flash frantically");
             System.out.println("In an act of desperation, you take the gems out of your pocket and throw them on the ground...");
             System.out.println("The moment the gems touch the ground, they explode in a chain, with enough energy to shake \n" +
@@ -42,6 +51,7 @@ public class GemsChamber extends Quest {
             System.out.println("\n--- GAME OVER ---");
             System.exit(0);
         }
+        System.out.println("You approach the inscription");
         getInscriptionText();
 
         HashMap<Integer, String> correctAnswer = new HashMap<>(Map.of(1, "fuchsite", 2 , "opal", 3,  "topaz", 4, "iridium", 5, "apatite"));

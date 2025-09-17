@@ -69,10 +69,23 @@ public class LocationData {
                 Map.entry("caves entry", new Location("caves entry",
                         """
                         You notice the secret entry that the merchant had told you, and wonder how you didn't realize before.
-                        As you enter the cave, you light the torch that the merchant gave you.
-                        As the flame flares, the entire cave's chamber is revealed to you.""",
+                        Entering the cave, you can't see anything because of the darkness.""",
                         new GemsChamber(player),
                         new HashMap<>(Map.of("W", "caves lakes")))
+                ),
+                Map.entry("demons room", new Location("demons room",
+                        """
+                                You step into a vast, dimly-lit chamber. The cave walls are covered in thick layers of dry moss, and twisted roots hang from the ceiling 
+                                like webs. The air is heavy, permeated with the odor of sulfur and flammable gas emanating from cracks in the floor. Each step echoes 
+                                cracking sounds against the rocks, as if the entire cave were waiting for a breath of fire to bring it down.
+                                At the center of the room stands a towering demon, muscles rippling beneath dark, glistening skin, horns 
+                                curving skyward, and eyes like molten gold. Its gaze fixes upon you, and a low, rumbling voice vibrates the walls:
+                                'None shall pass to the west while I remain.'
+                                The western wall is dominated by an ominous door, black iron with infernal runes etched into its surface. 
+                                You sense power emanating from it, as if whatever lies beyond waits with bated breath.
+                                """,
+                        new TheDemon(player),
+                        new HashMap<>(Map.of("W", "")))
                 ),
                 Map.entry("caves lake", new Location("caves lakes",
                         """
@@ -92,3 +105,6 @@ public class LocationData {
 
 
 }
+
+
+

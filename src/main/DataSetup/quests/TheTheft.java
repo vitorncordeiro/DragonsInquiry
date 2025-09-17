@@ -47,7 +47,7 @@ public class TheTheft extends Quest {
                 flag = false;
             }else if(ans.equalsIgnoreCase("negative") || ans.startsWith("n")){
                 System.out.println("Kanon:\n" + "It seems you dont know the local rules yet..." + "\nYou can't avoid the light path here. Let me try again");
-            }else if(ans.equals("banishment") && getPlayer().hasItem("banishment scroll")){
+            }else if(ans.equals("banishment")){
                 System.out.println("""
                         W-what...? You… how dare you utter that name before me?!
                         Foolish mortal… I was so close. Hidden among you, peddling worthless trinkets while harvesting souls with every deal.
