@@ -75,7 +75,8 @@ public class TheTheft extends Quest {
         System.out.println("Kanon:\nVery well, outsider, I see you didnt come back empty-handed. Holding up my end,\n" +
                 "to the west of here, there is a tower, where an intelligent, brilliant, magnificent wizard lives.\nGo there " +
                 "and talk to him, perhaps he will help you with your... illness.\n Take this lamp, and go to the south, then, you may notice the cave entry in east." +
-                "\nTake care of yourself, outsider. in spite of not needed to pay bills for the road toll, the danger is in that cave.");
+                "\nTake care of yourself, outsider. in spite of not needed to pay bills for the road toll, the danger is in that cave." +
+                "Lastly, if you see a portable mirror, do everything to take it with you.");
         getPlayer().addItemToInventory(new Item("Lamp", "A crooked brass lamp, its surface mottled with green corrosion and dark stains that look unsettlingly like dried blood."));
 
     }

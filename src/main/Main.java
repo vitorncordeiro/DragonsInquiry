@@ -33,26 +33,27 @@ public class Main {
         
 
         Map<String, List<String>> savedData = fileManager.load();
-
+        System.out.println("[L]oad");
+        System.out.println("[N]ew Game");
         Location currentLocation = locations.getLocations().get("camping"); // default
-
-        List<String> savedLocation = savedData.get("location");
-        if(savedLocation != null && !savedLocation.isEmpty() && savedLocation.get(0) != null){
-            String locName = savedLocation.get(0);
-            if(locations.getLocations().containsKey(locName)){
-                currentLocation = locations.getLocations().get(locName);
+        if(scanner.nextLine().toLowerCase().contains("l")) {
+            List<String> savedLocation = savedData.get("location");
+            if (savedLocation != null && !savedLocation.isEmpty() && savedLocation.get(0) != null) {
+                String locName = savedLocation.get(0);
+                if (locations.getLocations().containsKey(locName)) {
+                    currentLocation = locations.getLocations().get(locName);
+                }
             }
-        }
 
-        List<String> savedQuests = savedData.get("quests");
-        if(savedQuests != null && !savedQuests.isEmpty()){
-            for(var q : quests.getQuests().values()){
-                if(savedQuests.contains(q.getName())){
-                    q.completeQuest();
+            List<String> savedQuests = savedData.get("quests");
+            if (savedQuests != null && !savedQuests.isEmpty()) {
+                for (var q : quests.getQuests().values()) {
+                    if (savedQuests.contains(q.getName())) {
+                        q.completeQuest();
+                    }
                 }
             }
         }
-
 
 
         boolean flag = true;

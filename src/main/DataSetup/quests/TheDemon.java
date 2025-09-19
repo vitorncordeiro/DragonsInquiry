@@ -24,12 +24,6 @@ public class TheDemon extends Quest{
                 System.out.println("Demon: Hahaha! Do you think a mere mortal can kill me?");
                 sc.nextLine();
                 System.out.println("With a swift gesture of its clawed hand, a sphere of searing flame bursts into existence,\ncrackling with infernal energy. The heat scorches your skin before it even strikes.");
-                String playerTurn = sc.nextLine().toLowerCase();
-                if(playerTurn.contains("avoid") || playerTurn.contains("hide")|| playerTurn.contains("dodge")){
-                    System.out.println("Oddly enough, your action was successful");
-                    System.out.println("Meanwhile, the rest of the room begins to catch fire, with clear signs of collapse.");
-                    return;
-                }
                 System.out.println("In an instant, the fireball engulfs you, blinding light and unbearable agony consumes your body");
                 System.out.println("--Game over--");
                 System.exit(0);
@@ -38,9 +32,6 @@ public class TheDemon extends Quest{
                         "roar torn between rage and fear, it is torn from this plane in a blinding flash.\n" +
                         "As it vanishes, the iron bars sealing the western door crack and disintegrate into dust.\n" +
                         "Silence falls. The way west is clear.");
-                System.out.println("Although he has completely disappeared, the ring on his finger remains, falling to the ground and appearing to serve as a good belt for you.");
-                String beltDecision = sc.nextLine().toLowerCase();
-                System.out.println("Regardless of your thoughts, your instincts take over, and you take the belt");
                 Quest.completeQuest(TheDemon.class);
                 break;
             } else {

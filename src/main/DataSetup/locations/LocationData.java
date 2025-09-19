@@ -87,13 +87,13 @@ public class LocationData {
                         new TheDemon(player),
                         new HashMap<>(Map.of("W", "")))
                 ),
-                Map.entry("caves lake", new Location("caves lakes",
+                Map.entry("treasure chamber", new Location("treasure chamber",
                         """
-                                While walking, you smell rotten fish and wonder where it comes from.
-                                Leaving the corridor, the claustrophobic feeling disappears, and you cant believe in your eyes:
-                                An unimaginably large lake, its surface shrouded by a thick layer of green film that swallows every reflection.
+                                A vast chamber filled with scattered coins, broken chests, and torn tapestries of forgotten kings. In the center,
+                                 on a cracked pedestal, lies a hand mirror with a flawless silver frame. Unlike the other treasures, it gleams
+                                 with a strange light, its glass showing fleeting shapes that do not exist in the room.
                                 """,
-                        new TheFisherman(player),
+                        new PentagramPuzzle(player),
                         new HashMap<>(Map.of("W", "")))
                 )
         ));
