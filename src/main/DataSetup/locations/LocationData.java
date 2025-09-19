@@ -91,7 +91,12 @@ public class LocationData {
                         "",
                         new PentagramPuzzle(player),
                         new HashMap<>(Map.of("W", "")))
-                )
+                ),
+                Map.entry("towers underground", new Location("towers underground",
+                        "",
+                        new TheBeholder(player),
+                        new HashMap<>(Map.of())
+                        ))
         ));
 
     }
