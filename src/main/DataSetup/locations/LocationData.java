@@ -85,14 +85,10 @@ public class LocationData {
                                 You sense power emanating from it, as if whatever lies beyond waits with bated breath.
                                 """,
                         new TheDemon(player),
-                        new HashMap<>(Map.of("W", "")))
+                        new HashMap<>(Map.of("W", "treasure chamber")))
                 ),
                 Map.entry("treasure chamber", new Location("treasure chamber",
-                        """
-                                A vast chamber filled with scattered coins, broken chests, and torn tapestries of forgotten kings. In the center,
-                                 on a cracked pedestal, lies a hand mirror with a flawless silver frame. Unlike the other treasures, it gleams
-                                 with a strange light, its glass showing fleeting shapes that do not exist in the room.
-                                """,
+                        "",
                         new PentagramPuzzle(player),
                         new HashMap<>(Map.of("W", "")))
                 )
