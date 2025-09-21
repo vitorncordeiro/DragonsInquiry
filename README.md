@@ -35,16 +35,12 @@ To run **DragonsInquiry**, follow one of the methods below:
    cd DragonsInquiry
    ```
 
-3. Compile and run the `Main.java` file:
+3. Compile and run the `Main.java` file in src/main/Main.java
 
-   ```bash
-   javac src/Main.java
-   java src.Main
-   ```
 
    Ensure you have the Java Development Kit (JDK) installed on your system.
 
-### Option 2: Download and Run the Executable
+### Option 2: Download and Run the Executable ( Recomended if you dont have JDK installed)
 
 1. Download the project files from the repository.
 
