@@ -408,5 +408,7 @@ public class DragonHuntLabyrinth extends Quest {
         System.out.println("Your body merges with its essence — scales shimmer on your arms, your heart pounds with ancient fire.");
         System.out.println("\n\"Together,\" the dragon’s voice roars within you, \"we shall confront the false wizard.\"");
         System.out.println("Your quest is no longer survival, but vengeance — and the fate of the world.");
+        Quest quest = new FinalSkyBattle(getPlayer());
+        quest.startQuest();
     }
 }

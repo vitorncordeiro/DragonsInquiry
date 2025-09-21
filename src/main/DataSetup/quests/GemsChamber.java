@@ -78,8 +78,8 @@ public class GemsChamber extends Quest {
     }
     private void getInscriptionText(){
         System.out.println("The inscription says:");
-        System.out.println("\"Μόνο η φωτιά θα σας βοηθήσει. Τοποθετήστε τις πέτρες με τη σωστή σειρά και το φως θα σας καθοδηγήσει\"");
-        System.out.println("The word φωτιά take your attention.");
+        System.out.println("\"Mono i fotia tha sas voithisei. Topothetiste tis petres me ti sosti seira kai to fos tha sas kathodigisei\n\"");
+        System.out.println("The word fotia take your attention.");
 
     }
 }

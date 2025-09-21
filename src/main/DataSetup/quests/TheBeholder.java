@@ -66,8 +66,12 @@ public class TheBeholder extends Quest{
 
         if (beholderDefeated) {
             System.out.println("The beholder has been petrified! The path to the hatch is clear. You can finally climb through!");
+            Quest quest = new TheMageTower(getPlayer());
+            quest.startQuest();
         } else if (climbs >= CLIMBS_TO_HATCH) {
             System.out.println("You successfully climb the stones and reach the hatch, escaping the beholder... for now.");
+            Quest quest = new TheMageTower(getPlayer());
+            quest.startQuest();
         }
     }
 

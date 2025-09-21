@@ -368,7 +368,7 @@ public class FinalSkyBattle extends Quest {
         } else {
             System.out.println("\nThe clouds swallow what remains of the fight. Fate remains uncertain.");
         }
-        System.out.println("\n--- Quest Complete ---");
+        System.out.println("\n--- End Game ---");
     }
 
     // small helper to pause narrative (milliseconds)

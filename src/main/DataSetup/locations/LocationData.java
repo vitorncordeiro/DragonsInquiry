@@ -100,8 +100,11 @@ public class LocationData {
                 Map.entry("mountain", new Location("mountain",
                         "",
                         new DragonHuntLabyrinth(player),
-                        null))
-        ));
+                        null)
+                )
+
+                )
+        );
 
     }
     public Map<String, Location> getLocations(){
