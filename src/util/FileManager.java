@@ -7,43 +7,65 @@ import java.util.*;
 
 public class FileManager {
 
-    public static Map<String, List<String>> load(){
-        File file = new File("src/save/save.txt");
+    private static final String SAVE_PATH = "save/save.txt";
+
+    public static Map<String, List<String>> load() {
+        File file = new File(SAVE_PATH);
+
+        // Se o arquivo não existe, cria a pasta e o arquivo vazio
+        if (!file.exists()) {
+            System.out.println("Save file not found. Criando arquivo vazio...");
+            try {
+                if (!file.getParentFile().exists()) {
+                    file.getParentFile().mkdirs(); // cria a pasta save/
+                }
+                file.createNewFile(); // cria save.txt vazio
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return new HashMap<>(); // retorna mapa vazio
+        }
 
         Map<String, List<String>> res = new HashMap<>();
 
-        try(BufferedReader bufferedReader = new BufferedReader(new FileReader(file))){
-            res.put("location", Collections.singletonList(bufferedReader.readLine()));
+        try (BufferedReader bufferedReader = new BufferedReader(new FileReader(file))) {
+            String firstLine = bufferedReader.readLine();
+            res.put("location", firstLine != null ? Collections.singletonList(firstLine) : Collections.emptyList());
+
             String line;
             List<String> quests = new ArrayList<>();
-            while((line = bufferedReader.readLine()) != null){
+            while ((line = bufferedReader.readLine()) != null) {
                 quests.add(line);
             }
             res.put("quests", quests);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
-        catch(FileNotFoundException e){
-            System.out.println("Not found");
-        }
-        catch(IOException e){
-            System.out.println("something wet wrong");
-        }
-
 
         return res;
     }
-    public static void save(String location){
-        File file = new File("src/save/save.txt");
-        try(BufferedWriter writer = new BufferedWriter(new FileWriter(file))){
-            writer.write(location);
-            writer.newLine();
-            for (var questName : Quest.getCompletedMap().keySet()) {
-                writer.write(questName.getName());
-                writer.newLine();
+
+    public static void save(String location) {
+        File file = new File(SAVE_PATH);
+
+        try {
+            if (!file.getParentFile().exists()) {
+                file.getParentFile().mkdirs(); // cria a pasta save/ se não existir
             }
-        }catch (IOException e){
+            if (!file.exists()) {
+                file.createNewFile(); // cria save.txt se não existir
+            }
+
+            try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
+                writer.write(location);
+                writer.newLine();
+                for (var questName : Quest.getCompletedMap().keySet()) {
+                    writer.write(questName.getName());
+                    writer.newLine();
+                }
+            }
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
-
 }
