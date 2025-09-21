@@ -71,7 +71,7 @@ public class LocationData {
                         You notice the secret entry that the merchant had told you, and wonder how you didn't realize before.
                         Entering the cave, you can't see anything because of the darkness.""",
                         new GemsChamber(player),
-                        new HashMap<>(Map.of("W", "caves lakes")))
+                        new HashMap<>(Map.of("W", "demons room")))
                 ),
                 Map.entry("demons room", new Location("demons room",
                         """
