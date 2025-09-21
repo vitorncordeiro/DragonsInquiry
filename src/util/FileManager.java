@@ -12,18 +12,18 @@ public class FileManager {
     public static Map<String, List<String>> load() {
         File file = new File(SAVE_PATH);
 
-        // Se o arquivo não existe, cria a pasta e o arquivo vazio
+
         if (!file.exists()) {
             System.out.println("Save file not found. Criando arquivo vazio...");
             try {
                 if (!file.getParentFile().exists()) {
-                    file.getParentFile().mkdirs(); // cria a pasta save/
+                    file.getParentFile().mkdirs();
                 }
-                file.createNewFile(); // cria save.txt vazio
+                file.createNewFile();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return new HashMap<>(); // retorna mapa vazio
+            return new HashMap<>();
         }
 
         Map<String, List<String>> res = new HashMap<>();
@@ -50,10 +50,10 @@ public class FileManager {
 
         try {
             if (!file.getParentFile().exists()) {
-                file.getParentFile().mkdirs(); // cria a pasta save/ se não existir
+                file.getParentFile().mkdirs();
             }
             if (!file.exists()) {
-                file.createNewFile(); // cria save.txt se não existir
+                file.createNewFile();
             }
 
             try (BufferedWriter writer = new BufferedWriter(new FileWriter(file))) {
