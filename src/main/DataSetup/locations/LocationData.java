@@ -90,13 +90,17 @@ public class LocationData {
                 Map.entry("treasure chamber", new Location("treasure chamber",
                         "",
                         new PentagramPuzzle(player),
-                        new HashMap<>(Map.of("W", "")))
+                        new HashMap<>(Map.of("W", "towers underground")))
                 ),
                 Map.entry("towers underground", new Location("towers underground",
                         "",
                         new TheBeholder(player),
-                        new HashMap<>(Map.of())
-                        ))
+                        new HashMap<>(Map.of("N", "mountain")))
+                ),
+                Map.entry("mountain", new Location("mountain",
+                        "",
+                        new DragonHuntLabyrinth(player),
+                        null))
         ));
 
     }

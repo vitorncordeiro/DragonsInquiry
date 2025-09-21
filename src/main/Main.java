@@ -27,6 +27,21 @@ public class Main {
 
     public static void main(String[] args) {
 
+        try {
+            URL musicURL = Main.class.getResource("/music.wav");
+            if (musicURL != null) {
+                Clip clip = AudioSystem.getClip();
+                clip.open(AudioSystem.getAudioInputStream(musicURL));
+                clip.loop(Clip.LOOP_CONTINUOUSLY); // loop infinito
+                clip.start();
+            } else {
+                System.err.println("Arquivo de música não encontrado!");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+
 
         System.out.println("\u001B[33m" + "Lets start the adventure" + "\u001B[0m");
 

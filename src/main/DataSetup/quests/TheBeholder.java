@@ -42,8 +42,6 @@ public class TheBeholder extends Quest{
                 playerParalyzed = false;
                 continue;
             }
-
-            System.out.println("\nWhat do you do? (up, move, wait, help)");
             String action = sc.nextLine().trim().toLowerCase();
 
             switch (action) {
