@@ -32,10 +32,8 @@ public class Main {
             if (musicURL != null) {
                 Clip clip = AudioSystem.getClip();
                 clip.open(AudioSystem.getAudioInputStream(musicURL));
-                clip.loop(Clip.LOOP_CONTINUOUSLY); // loop infinito
+                clip.loop(Clip.LOOP_CONTINUOUSLY);
                 clip.start();
-            } else {
-                System.err.println("Arquivo de música não encontrado!");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -43,7 +41,7 @@ public class Main {
 
 
 
-        System.out.println("\u001B[33m" + "Lets start the adventure" + "\u001B[0m");
+        System.out.println("Lets start the adventure");
 
         
 

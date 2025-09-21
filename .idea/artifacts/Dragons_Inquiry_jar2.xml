@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Dragons_Inquiry:jar2">
+    <output-path>$PROJECT_DIR$/out/artifacts/Dragons_Inquiry_jar2</output-path>
+    <root id="archive" name="Dragons_Inquiry.jar">
+      <element id="module-output" name="Dragons_Inquiry" />
+    </root>
+  </artifact>
+</component>
