@@ -2,36 +2,24 @@ package main.DataSetup.quests;
 
 import main.DataSetup.entities.Player;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.Scanner;
 
-public class PentagramPuzzle extends Quest{
+public class PentagramPuzzle extends Quest {
 
-    public PentagramPuzzle(Player player){
-        super("take the mirror", "treasure chamber", player);
+    public PentagramPuzzle(Player player) {
+        super("Pentagram Puzzle", "treasure chamber", player);
     }
 
-    private static final Map<String, String> expected = new LinkedHashMap<>();
-    static {
-        expected.put("SW", "N");
-        expected.put("N",  "SE");
-        expected.put("SE", "W");
-        expected.put("W",  "E");
-        expected.put("E",  "SW");
-    }
-
-    private static final int MAX_ERRORS = 3;
-
+    @Override
     public void startQuest() {
         Scanner sc = new Scanner(System.in);
-        int errors = 0;
-        boolean solved = false;
 
         System.out.println("""
-                You've entered a dimly lit chamber, except for a shaft of light coming from the southwest corner of the
-                chamber. The chamber has small mirrors hanging on the wall at each of the cardinal and intermediate points.
-                """);
-        System.out.println("In the middle of the chamber, a pedestal with a serpent's head catches your eye, with an engraving.");
-        System.out.println("""
+                You enter a dimly lit treasure chamber. 
+                At the center, a pedestal carved in the shape of a serpent's head awaits you.
+                Its eyes glow faintly, and an ancient inscription is engraved on its surface:
+                
                 "The serpent coils in the root of the world, hidden in the southwest.
                 It climbs toward the crown above,
                 then slithers down into the abyss of the southeast.
@@ -39,66 +27,39 @@ public class PentagramPuzzle extends Quest{
                 strikes toward the dawn in the east,
                 and returns to the dark coil from whence it came."
                 """);
-        String current = "SW"; // beam starts at SW
 
-        while (true) {
-            String required = expected.get(current);
+        System.out.println("\nThe riddle seems to describe a pattern... perhaps a symbol.");
+        System.out.println("What word will you speak to the pedestal?");
 
+        boolean solved = false;
+        int attempts = 0;
+        final int MAX_ATTEMPTS = 3;
 
-            String input = sc.nextLine().trim();
-            String dir = normalizeDirection(input);
+        while (!solved) {
+            String answer = sc.nextLine().trim().toLowerCase();
+            attempts++;
 
-            if (dir == null) {
-                continue;
-            }
-
-            if (dir.equals(required)) {
-                System.out.println("The light hits the mirror at " + current + " and points to " + required + ".");
-                current = required;
-
-                // if the beam has returned to SW, puzzle is solved
-                if (current.equals("SW")) {
-                    solved = true;
-                    break;
-                }
+            if (answer.equals("star")) {
+                solved = true;
+                System.out.println("\nThe serpent’s eyes shine brightly!");
+                System.out.println("A glowing star pattern appears across the chamber floor.");
+                System.out.println("The pedestal clicks, releasing a hand mirror into your grasp.");
+                System.out.println("At the same time, a hidden passage opens to the north...");
+                Quest.completeQuest(PentagramPuzzle.class);
             } else {
-                errors++;
-                if (errors >= MAX_ERRORS) {
-                    System.out.println("\nThe ground shakes violently. Stones fall from above...");
-                    System.out.println("The cave collapses and you are buried under the rubble.");
-                    System.out.println("--GAME OVER--");
+                if (attempts >= MAX_ATTEMPTS) {
+                    System.out.println("\nThe ground trembles violently...");
+                    System.out.println("The serpent hisses as the chamber collapses around you!");
+                    System.out.println("-- GAME OVER --");
                     System.exit(0);
-                    return;
-                }else{
-                    System.out.println("You feel the chamber shake slightly, and suddenly, the serpent's eyes light up.");
+                } else {
+                    System.out.println("The serpent’s eyes flare red. That word is wrong...");
+                    System.out.println("Try again.");
                 }
             }
         }
-
-        if (solved) {
-            System.out.println("\nThe mirrors align perfectly. The beam traces a glowing star.");
-            System.out.println("A hidden mechanism clicks. The pedestal releases the hand mirror!");
-            System.out.println("You take the hand mirror");
-            System.out.println("simultaneously, a passage, which appears to be the last, opens to the north.");
-        }
     }
 
-    private String normalizeDirection(String raw) {
-        if (raw == null) return null;
-        String s = raw.trim().toUpperCase(Locale.ROOT);
-
-        switch (s) {
-            case "N": case "NORTH": return "N";
-            case "NE": case "NORTHEAST": return "NE";
-            case "E": case "EAST": return "E";
-            case "SE": case "SOUTHEAST": return "SE";
-            case "S": case "SOUTH": return "S";
-            case "SW": case "SOUTHWEST": return "SW";
-            case "W": case "WEST": return "W";
-            case "NW": case "NORTHWEST": return "NW";
-            default: return null;
-        }
-    }
     @Override
     public boolean unlocksSecretDirection() {
         return false;
@@ -109,6 +70,3 @@ public class PentagramPuzzle extends Quest{
         return null;
     }
 }
-
-
-

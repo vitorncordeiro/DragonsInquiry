@@ -5,26 +5,17 @@ import main.DataSetup.entities.Player;
 import java.util.HashMap;
 import java.util.Scanner;
 
-public class TheMageTower extends Quest{
+public class TheMageTower extends Quest {
 
-    public TheMageTower(Player player){
-        super("the mage tower", "towers underground", player);
-    }
-
-    @Override
-    public boolean unlocksSecretDirection() {
-        return false;
-    }
-
-    @Override
-    public HashMap<String, String> getSecretDirection() {
-        return null;
-    }
     private Scanner sc = new Scanner(System.in);
     private boolean reachedTop = false;
     private boolean talkedToWizard = false;
     private boolean stoleItem = false;
     private boolean questAccepted = false;
+
+    public TheMageTower(Player player) {
+        super("the mage tower", "towers underground", player);
+    }
 
     @Override
     public void startQuest() {
@@ -33,25 +24,25 @@ public class TheMageTower extends Quest{
 
         while (!questAccepted) {
             if (!reachedTop) {
-                String action = sc.nextLine().trim().toLowerCase();
-
-                switch (action) {
-                    case "stairs":
-                    case "up":
-                        climbStairs();
-                        break;
-                    case "look":
-                        System.out.println("The entrance hall is quiet. Dust covers the floor, and the only way forward is up the staircase.");
-                        break;
-                    case "wait":
-                        System.out.println("You wait, but nothing changes...");
-                        break;
-                    default:
-                        System.out.println("Invalid command. Try again.");
-                }
+                showStairsMenu();
             } else {
-                wizardRoom();
+                showWizardMenu();
             }
+        }
+    }
+
+    private void showStairsMenu() {
+        System.out.println("\nWhat will you do?");
+        System.out.println("1) Climb the stairs");
+        System.out.println("2) Look around");
+        System.out.println("3) Wait");
+
+        int choice = getChoice(3);
+
+        switch (choice) {
+            case 1 -> climbStairs();
+            case 2 -> System.out.println("The entrance hall is quiet. Dust covers the floor, and the only way forward is up the staircase.");
+            case 3 -> System.out.println("You wait, but nothing changes...");
         }
     }
 
@@ -61,39 +52,38 @@ public class TheMageTower extends Quest{
         reachedTop = true;
     }
 
-    private void wizardRoom() {
+    private void showWizardMenu() {
         System.out.println("\nYou are inside the wizard’s chamber.");
         if (!talkedToWizard) {
             System.out.println("The room is filled with shelves of ancient books, glowing artifacts, and mysterious potions.");
-            System.out.println("In the corner of the room, you see a giant sleeping griffon");
+            System.out.println("In the corner of the room, you see a giant sleeping griffon.");
             System.out.println("A tall wizard stands before a large desk, watching you with a piercing gaze.");
         }
-        String action = sc.nextLine().trim().toLowerCase();
 
-        switch (action) {
-            case "talk":
-                talkToWizard();
-                break;
-            case "steal":
-                stealItem();
-                break;
-            case "look":
+        System.out.println("\nWhat will you do?");
+        System.out.println("1) Talk to the wizard");
+        System.out.println("2) Inspect the room");
+        System.out.println("3) Attempt to steal an item");
+
+        int choice = getChoice(3);
+
+        switch (choice) {
+            case 1 -> talkToWizard();
+            case 2 -> {
                 System.out.println("You see magical scrolls, shimmering crystals, and a staff resting against the desk.");
-                System.out.println("In the corner of the room, you see a giant sleeping griffon");
+                System.out.println("In the corner of the room, you see a giant sleeping griffon.");
                 System.out.println("The wizard clearly treasures these artifacts.");
-                break;
-            default:
-                System.out.println("The wizard narrows his eyes, clearly unimpressed by your indecision.");
+            }
+            case 3 -> stealItem();
         }
     }
 
     private void talkToWizard() {
         if (!talkedToWizard) {
             System.out.println("You approach the wizard. His deep voice fills the chamber:");
-            System.out.println("It looks like you got pass all the tower protections, well done.");
+            System.out.println("\"It looks like you got past all the tower protections, well done.\"");
             System.out.println("\"I know why you are here. The curse that binds you is strong...\"");
-            System.out.println("\"But I can help you." +
-                    "For that, I need you to look for an ingredient that I don't have with me.\"");
+            System.out.println("\"But I can help you. For that, I need you to look for an ingredient that I don't have with me.\"");
             System.out.println("The wizard leans closer, his eyes glowing faintly.");
             System.out.println("\"Bring me the liver of the dragon that dwells atop the northern mountain.\"");
             System.out.println("Hitch a ride with the griffon.");
@@ -115,5 +105,31 @@ public class TheMageTower extends Quest{
         } else {
             System.out.println("The wizard glares at you, his eyes burning with anger. Best not try that again.");
         }
+    }
+
+    private int getChoice(int maxOption) {
+        while (true) {
+            try {
+                String input = sc.nextLine().trim();
+                int choice = Integer.parseInt(input);
+                if (choice >= 1 && choice <= maxOption) {
+                    return choice;
+                } else {
+                    System.out.println("Enter a number between 1 and " + maxOption + ".");
+                }
+            } catch (NumberFormatException e) {
+                System.out.println("Enter the number corresponding to your choice.");
+            }
+        }
+    }
+
+    @Override
+    public boolean unlocksSecretDirection() {
+        return false;
+    }
+
+    @Override
+    public HashMap<String, String> getSecretDirection() {
+        return null;
     }
 }

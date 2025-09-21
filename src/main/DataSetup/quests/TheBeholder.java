@@ -14,6 +14,7 @@ public class TheBeholder extends Quest{
 
     private int climbs = 0; // Number of successful climbs
     private final int CLIMBS_TO_HATCH = 5;
+    private boolean canReflect = true; // Track if player can reflect this turn
 
     public TheBeholder(Player player){
         super("the beholder", "towers underground", player);
@@ -40,27 +41,41 @@ public class TheBeholder extends Quest{
                 System.out.println("\nYou are paralyzed and fall to the start of the basement!");
                 climbs = 0;
                 playerParalyzed = false;
+                canReflect = true;
                 continue;
             }
-            String action = sc.nextLine().trim().toLowerCase();
 
-            switch (action) {
-                case "up":
+            System.out.println("\nWhat will you do?");
+            System.out.println("[1] Climb the stones");
+            System.out.println("[2] Move cautiously");
+            if (canReflect) {
+                System.out.println("[3] Reflect the beholder's ray");
+            }
+
+            int choice = getChoice();
+
+            switch (choice) {
+                case 1:
                     attemptClimb();
+                    canReflect = true; // climbing does not restrict reflection next turn
                     break;
-                case "move":
+                case 2:
                     System.out.println("You cautiously move through the basement...");
                     beholderTurn();
+                    canReflect = true; // moving does not restrict reflection next turn
                     break;
-                case "wait":
-                    System.out.println("You wait, observing the beholder...");
-                    beholderTurn();
-                    break;
-                case "help":
-                    System.out.println("Available commands: up (climb), move (move), wait (wait)");
+                case 3:
+                    if (canReflect) {
+                        boolean reflected = beholderTurn(true);
+                        if (reflected) {
+                            canReflect = false; // cannot reflect next turn
+                        }
+                    } else {
+                        System.out.println("You cannot reflect again so soon. Choose another action.");
+                    }
                     break;
                 default:
-                    System.out.println("Invalid command. Try again.");
+                    System.out.println("Invalid choice. Try again.");
             }
         }
 
@@ -72,6 +87,18 @@ public class TheBeholder extends Quest{
             System.out.println("You successfully climb the stones and reach the hatch, escaping the beholder... for now.");
             Quest quest = new TheMageTower(getPlayer());
             quest.startQuest();
+        }
+    }
+
+    private int getChoice() {
+        while (true) {
+            try {
+                String input = sc.nextLine().trim();
+                int choice = Integer.parseInt(input);
+                return choice;
+            } catch (NumberFormatException e) {
+                System.out.println("Enter a number corresponding to your choice.");
+            }
         }
     }
 
@@ -89,17 +116,28 @@ public class TheBeholder extends Quest{
         System.out.println("You climb a bit higher. Steps climbed: " + climbs + "/" + CLIMBS_TO_HATCH);
     }
 
+    // Overloaded: forcedReflect=false for normal turn, true when player chooses reflect
     private boolean beholderTurn() {
+        return beholderTurn(false);
+    }
+
+    private boolean beholderTurn(boolean forcedReflect) {
         String[] rays = {"paralysis", "petrifying", "light"};
         String chosenRay = rays[rand.nextInt(rays.length)];
 
         System.out.println("The beholder fires a " + chosenRay + " ray!");
 
-        System.out.println("Type 'reflect' to attempt to deflect the ray with your mirror!");
-        String input = sc.nextLine().trim().toLowerCase();
-        List<String> validResponses = Arrays.asList("reflect", "mirror", "deflect");
+        boolean reflected = false;
 
-        boolean reflected = validResponses.contains(input);
+        if (forcedReflect) {
+            System.out.println("You attempt to reflect the ray with your mirror!");
+            reflected = true;
+        } else {
+            System.out.println("Type 'reflect' if you want to try deflecting the ray!");
+            String input = sc.nextLine().trim().toLowerCase();
+            List<String> validResponses = Arrays.asList("reflect", "mirror", "deflect");
+            reflected = validResponses.contains(input);
+        }
 
         switch (chosenRay) {
             case "paralysis":
@@ -129,6 +167,6 @@ public class TheBeholder extends Quest{
                 break;
         }
 
-        return reflected; // return true if player reflected (could affect other mechanics)
+        return reflected;
     }
 }
