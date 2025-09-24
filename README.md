@@ -38,9 +38,9 @@ To run **DragonsInquiry**, follow one of the methods below:
 3. Compile and run the `Main.java` file in src/main/Main.java
 
 
-   Ensure you have the Java Development Kit (JDK) installed on your system.
+   Ensure you have the Java Development Kit (JDK) installed on your system, otherwise, go to option 2.
 
-### Option 2: Download and Run the Executable ( Recomended if you dont have JDK installed)
+### Option 2: Download and Run the Executable ( Recomended if you dont have java installed)
 
 1. Download the project files from the repository.
 
