@@ -15,7 +15,9 @@ Throughout the development of **DragonsInquiry**, several key concepts and skill
 
 * **Debugging and Problem Solving:** Encountered and resolved various coding challenges, honing problem-solving skills.
 * **Git Problem Solving:** 
-Various versioning and git usage issues faced. 
+Various versioning and git usage issues faced.
+
+* **Understanding how Java works behind the scenes: ** In the dist package, I made the executable file available, with the .jar, a .bat to execute the code and the JRE to run the game.
 
 ## 🚀 Getting Started
 
